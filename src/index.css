@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+@plugin "daisyui";
+
+.urbanist {
+  font-family: "Urbanist", sans-serif;
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(1 0 0);
+  --color-base-200: oklch(96% 0.003 264.542);
+  --color-base-300: oklch(0.4891 0 0);
+  --color-base-content: oklch(0.3086 0.0511 207.06);
+  --color-primary: oklch(0.8899 0.1631 121.47);
+  --color-primary-content: oklch(0.2393 0 0);
+  --color-secondary: oklch(0.3086 0.0511 207.06);
+  --color-secondary-content: oklch(98% 0.003 247.858);
+}
