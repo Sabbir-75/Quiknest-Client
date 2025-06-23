@@ -6,7 +6,7 @@ const Footer = () => {
     return (
         <footer className="px-4 divide-y bg-neutral text-neutral-content">
             <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
-                <div className="lg:w-1/3 flex flex-col gap-2 items-center">
+                <div className="lg:w-1/3 flex flex-col gap-4 justify-center items-center">
                     <FooterLogo></FooterLogo>
 
                     <div className="join">

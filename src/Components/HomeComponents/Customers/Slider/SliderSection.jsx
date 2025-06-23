@@ -4,7 +4,7 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import "./SliderSection.css"
-import review from "../../../assets/reviewQuote.png"
+import review from "../../../../assets/reviewQuote.png"
 
 // Sample cards data
 const cards = [

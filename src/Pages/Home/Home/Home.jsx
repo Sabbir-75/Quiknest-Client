@@ -6,6 +6,7 @@ import Brands from '../../../Components/HomeComponents/Brands/Brands';
 import System from '../../../Components/HomeComponents/System/System';
 import Satisfaction from '../../../Components/HomeComponents/Satisfaction/Satisfaction';
 import Customers from '../../../Components/HomeComponents/Customers/customers';
+import Questions from '../../../Components/HomeComponents/Questions/Questions';
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
            <System></System>
            <Satisfaction></Satisfaction>
            <Customers></Customers>
+           <Questions></Questions>
           
         </div>
     );

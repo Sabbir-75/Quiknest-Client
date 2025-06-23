@@ -5,6 +5,7 @@
 .urbanist {
   font-family: "Urbanist", sans-serif;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -22,4 +23,5 @@
   --color-primary-content: oklch(0.2393 0 0);
   --color-secondary: oklch(0.3086 0.0511 207.06);
   --color-secondary-content: oklch(98% 0.003 247.858);
+  --color-info: oklch(96% 0.044 156.743);
 }
