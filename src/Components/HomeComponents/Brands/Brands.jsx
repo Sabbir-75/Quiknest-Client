@@ -1,11 +1,11 @@
 import React from 'react';
-import brands1 from "../../assets/brands/amazon.png"
-import brands2 from "../../assets/brands/amazon_vector.png"
-import brands3 from "../../assets/brands/casio.png"
-import brands4 from "../../assets/brands/moonstar.png"
-import brands5 from "../../assets/brands/randstad.png"
-import brands6 from "../../assets/brands/start-people 1.png"
-import brands7 from "../../assets/brands/start.png"
+import brands1 from "../../../assets/brands/amazon.png"
+import brands2 from "../../../assets/brands/amazon_vector.png"
+import brands3 from "../../../assets/brands/casio.png"
+import brands4 from "../../../assets/brands/moonstar.png"
+import brands5 from "../../../assets/brands/randstad.png"
+import brands6 from "../../../assets/brands/start-people 1.png"
+import brands7 from "../../../assets/brands/start.png"
 import Marquee from 'react-fast-marquee';
 
 const Brands = () => {

@@ -1,10 +1,11 @@
 import React from 'react';
-import Carosale from '../../../Components/carosel/Carosale';
-import Works from '../../../Components/Works/Works';
-import Services from '../../../Components/Services/Services';
-import Brands from '../../../Components/Brands/Brands';
-import System from '../../../Components/System/System';
-import Satisfaction from '../../../Components/Satisfaction/Satisfaction';
+import Carosale from '../../../Components/HomeComponents/carosel/Carosale';
+import Works from '../../../Components/HomeComponents/Works/Works';
+import Services from '../../../Components/HomeComponents/Services/Services';
+import Brands from '../../../Components/HomeComponents/Brands/Brands';
+import System from '../../../Components/HomeComponents/System/System';
+import Satisfaction from '../../../Components/HomeComponents/Satisfaction/Satisfaction';
+import Customers from '../../../Components/HomeComponents/Customers/customers';
 
 const Home = () => {
     return (
@@ -15,6 +16,8 @@ const Home = () => {
            <Brands></Brands>
            <System></System>
            <Satisfaction></Satisfaction>
+           <Customers></Customers>
+          
         </div>
     );
 };

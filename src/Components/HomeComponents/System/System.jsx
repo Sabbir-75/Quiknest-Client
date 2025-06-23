@@ -1,7 +1,7 @@
 import React from 'react';
-import system1 from "../../assets/live-tracking.png"
-import system2 from "../../assets/safe-delivery.png"
-import system3 from "../../assets/callcenter.png"
+import system1 from "../../../assets/live-tracking.png"
+import system2 from "../../../assets/safe-delivery.png"
+import system3 from "../../../assets/callcenter.png"
 
 const System = () => {
     return (

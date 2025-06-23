@@ -1,0 +1,10 @@
+.slick-arrow{
+    visibility: hidden;
+    background-color: chartreuse;
+}
+.slick-prev {
+    left: 0px;
+}
+.slick-next {
+    right: 0px;
+}

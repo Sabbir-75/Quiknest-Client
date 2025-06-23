@@ -5,6 +5,9 @@
 .urbanist {
   font-family: "Urbanist", sans-serif;
 }
+* {
+  box-sizing: border-box;
+}
 
 @plugin "daisyui/theme" {
   name: "light";

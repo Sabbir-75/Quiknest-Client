@@ -1,5 +1,5 @@
 import React from 'react';
-import satisfactionImg from "../../assets/location-merchant.png"
+import satisfactionImg from "../../../assets/location-merchant.png"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
