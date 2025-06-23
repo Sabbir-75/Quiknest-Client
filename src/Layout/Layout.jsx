@@ -1,15 +1,16 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import Navbar from '../Pages/Shared/Header/Navbar';
+import Footer from '../Pages/Shared/Footer/Footer';
 
 const Layout = () => {
     return (
         <div className='bg-base-200 urbanist'>
             <Navbar></Navbar>
-            <div>
+            <div className='min-h-[calc(100vh-374.89px)]'>
                 <Outlet></Outlet>
             </div>
-            <h1>Footer</h1>
+            <Footer></Footer>
         </div>
     );
 };

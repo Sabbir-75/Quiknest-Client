@@ -1,13 +1,5 @@
 import React from 'react';
 import Container from '../Container/Container';
-import {
-    FaTruck,
-    FaGlobe,
-    FaWarehouse,
-    FaMoneyBillWave,
-    FaBuilding,
-    FaUndo,
-} from "react-icons/fa";
 
 const Services = () => {
     const services = [
@@ -63,10 +55,10 @@ const Services = () => {
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className="bg-base-100 rounded-2xl p-6 shadow-md hover:shadow-lg transition-shadow"
+                            className="hover:bg-primary group bg-base-100 rounded-2xl p-6 shadow-md hover:shadow-lg duration-300 "
                         >
-                            <div className="w-[108px] h-[108px] mx-auto rounded-full mb-4 flex justify-center items-center">
-                               <img className='w-full' src={service.icon} alt={service.icon} />
+                            <div className="w-[108px] h-[108px] mx-auto mb-4 flex justify-center items-center">
+                               <img className=' rounded-full' src={service.icon} alt={service.icon} />
                             </div>
                             <h3 className="text-2xl font-bold text-center text-base-content mb-3">{service.title}</h3>
                             <p className="text-base text-base-300 text-center">{service.description}</p>
