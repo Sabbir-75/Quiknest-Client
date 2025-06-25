@@ -1,9 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router';
-import Navbar from '../Pages/Shared/Header/Navbar';
-import Footer from '../Pages/Shared/Footer/Footer';
+import Navbar from '../../Pages/Shared/Header/Navbar';
+import Footer from '../../Pages/Shared/Footer/Footer';
+import Arrow from '../../Components/Arrow/Arrow';
 
-const Layout = () => {
+const HomeLayout = () => {
+
     return (
         <div className='bg-base-200 urbanist'>
             <Navbar></Navbar>
@@ -15,4 +17,4 @@ const Layout = () => {
     );
 };
 
-export default Layout;
+export default HomeLayout;

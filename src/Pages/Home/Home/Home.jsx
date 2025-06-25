@@ -18,8 +18,7 @@ const Home = () => {
            <System></System>
            <Satisfaction></Satisfaction>
            <Customers></Customers>
-           <Questions></Questions>
-          
+           <Questions></Questions> 
         </div>
     );
 };
