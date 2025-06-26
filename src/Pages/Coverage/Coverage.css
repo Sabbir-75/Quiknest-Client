@@ -1,0 +1,8 @@
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+    background-color: #33FF90;
+    color: black;
+  
+}
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm):hover {
+    background-color: #1cdb72;
+}

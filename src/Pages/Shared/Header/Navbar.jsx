@@ -45,7 +45,7 @@ const Navbar = () => {
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/services"}>Services</NavLink></li>
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/coverage"}>Coverage</NavLink></li>
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/about"}>About Us</NavLink></li>
-        <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/pricing"}>Pricing</NavLink></li>
+        <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/addparcel"}>Pricing</NavLink></li>
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/rider"}>Be a Rider</NavLink></li>
     </>
     return (
