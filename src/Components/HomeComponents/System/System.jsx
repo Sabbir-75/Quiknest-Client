@@ -9,8 +9,8 @@ const System = () => {
             <section className="max-w-[1280px] mx-auto px-2 md:px-3 lg:px-8 my-8 md:my-10 lg:my-14">
                 <div className="space-y-4">
                    
-                    <div className="flex flex-col shadow-sm shadow-base-300 rounded-xl bg-base-100 p-4">
-                        <div className="flex items-center gap-4 pb-4">
+                    <div className="flex shadow-sm shadow-base-300 rounded-xl bg-base-100 p-4">
+                        <div className="flex flex-col md:flex-row items-center gap-4 pb-4">
                             <div className="w-[200px] h-[200px] flex-shrink-0 border-r-2 pr-6 border-dashed">
                                 <img src={system1} alt="Live Tracking" className="w-full h-full object-contain" />
                             </div>
@@ -22,8 +22,8 @@ const System = () => {
                     </div>
 
                     
-                    <div className="flex flex-col shadow-sm shadow-base-300 rounded-xl bg-base-100 p-4">
-                        <div className="flex items-center gap-4 pb-4">
+                    <div className="flex shadow-sm shadow-base-300 rounded-xl bg-base-100 p-4">
+                        <div className="flex flex-col md:flex-row items-center gap-4 pb-4">
                             <div className="w-[200px] h-[200px] flex-shrink-0 border-r-2 pr-6 border-dashed">
                                 <img src={system2} alt="Safe Delivery" className="w-full h-full object-contain" />
                             </div>
@@ -36,8 +36,8 @@ const System = () => {
                     </div>
 
                   
-                    <div className="flex flex-col shadow-sm shadow-base-300 rounded-xl bg-base-100 p-4">
-                        <div className="flex items-center gap-4 pb-4">
+                    <div className="flex shadow-sm shadow-base-300 rounded-xl bg-base-100 p-4">
+                        <div className="flex flex-col md:flex-row items-center gap-4 pb-4">
                             <div className="w-[200px] h-[200px] flex-shrink-0 border-r-2 pr-6 border-dashed">
                                 <img src={system3} alt="24/7 Support" className="w-full h-full object-contain" />
                             </div>

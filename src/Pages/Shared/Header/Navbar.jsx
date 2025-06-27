@@ -47,6 +47,9 @@ const Navbar = () => {
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/about"}>About Us</NavLink></li>
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/addparcel"}>Pricing</NavLink></li>
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/rider"}>Be a Rider</NavLink></li>
+        {
+            user &&  <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/dashboard"}>Dashboard</NavLink></li>
+        }
     </>
     return (
         <div className="bg-base-100 shadow-sm py-4">
@@ -74,7 +77,7 @@ const Navbar = () => {
                         {
                             user ?
                                 <Link onClick={logoutHandler} className={`relative  inline-flex items-center cursor-pointer justify-start px-5 py-2 overflow-hidden font-bold rounded-lg group`}>
-                                    <span className="w-32 h-32 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-primary opacity-[3%]"></span>
+                                    <span className="w-12 h-12 rotate-45 translate-x-12 -translate-y-2 absolute left-0 top-0 bg-primary opacity-[3%]"></span>
                                     <span className="absolute top-0 left-0 w-48 h-48 -mt-1 transition-all duration-300 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-primary opacity-100 group-hover:-translate-x-8"></span>
                                     <span className={`relative w-full text-left text-base-300 transition-colors duration-200 ease-in-out group-hover:text-primary-content flex justify-center text-lg items-center gap-2`}>Logout</span>
                                     <span className="absolute inset-0 border-2 border-base-300 hover:border-primary rounded-lg duration-200"></span>
@@ -89,8 +92,8 @@ const Navbar = () => {
                         }
 
                         <div className='flex justify-center items-center'>
-                            <button className="btn btn-primary text-lg font-bold px-5 py-5 rounded-lg">Secondary</button>
-                            <div className='w-10 h-10 bg-neutral rounded-full flex justify-center items-center'>
+                            <button className="btn btn-primary bt-sm text-base md:text-lg font-bold px-5 py-5 rounded-lg">Secondary</button>
+                            <div className='w-6 h-6 bg-neutral rounded-full flex justify-center items-center'>
                                 <HiMiniArrowUpRight color='#B7D55C' size={25} />
                             </div>
                         </div>

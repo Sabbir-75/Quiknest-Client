@@ -4,6 +4,7 @@ import Container from '../../Components/Container/Container';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../Hooks/UseAuth/UseAuth';
+import UseAxiosSecure from '../../Hooks/UseAxiosSecure/UseAxiosSecure';
 
 function generateTrackingIdFromDate() {
     const base = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 17);
@@ -14,6 +15,7 @@ function generateTrackingIdFromDate() {
 const AddParcel = () => {
     const allData = useLoaderData()
     const { user } = useAuth()
+    const useSecure = UseAxiosSecure()
 
     const {
         register,
@@ -67,16 +69,6 @@ const AddParcel = () => {
 
     const onSubmit = (data) => {
 
-        const finalData = {
-            ...data, // all form inputs
-            cost: cost,
-            created_by: user?.email,
-            creation_date: new Date().toISOString(),
-            payment_status: "unpaid",
-            delivery_status: "pending",
-            tracking_id: generateTrackingIdFromDate()
-        };
-
         Swal.fire({
             title: "Delivery Cost Breakdown",
             html: `
@@ -96,15 +88,30 @@ const AddParcel = () => {
             cancelButtonColor: "#fbbf24",
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire({
-                    icon: "success",
-                    title: "Readirecting...",
-                    text:"Processing to payment gateway.",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-                // Proceed to payment logic here
-                console.log("Proceeding to payment...", finalData);
+                const finalData = {
+                    ...data, // all form inputs
+                    cost: cost,
+                    created_by: user?.email,
+                    creation_date: new Date().toISOString(),
+                    payment_status: "unpaid",
+                    delivery_status: "pending",
+                    tracking_id: generateTrackingIdFromDate()
+                };
+
+                useSecure.post("/parcels", finalData)
+                    .then(data => {
+                        if (data.data.insertedId) {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Readirecting...",
+                                text:"Processing to payment gateway.",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
+
+
             }
         });
 

@@ -6,6 +6,9 @@ import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
 import Coverage from "../Pages/Coverage/Coverage";
 import AddParcel from "../Pages/AddParcel/AddParcel";
+import PrivateRoute from "../Context/PrivateRoute/PrivateRoute";
+import DashboardLayout from "../Layout/DashboardLayout/DashboardLayout";
+import MyParcels from "../Pages/Dashboard/MyParcels/MyParcels";
 
 export const router = createBrowserRouter([
     {
@@ -17,13 +20,13 @@ export const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path:"/coverage",
+                path: "/coverage",
                 loader: () => fetch("./warehouses.json"),
                 Component: Coverage
             },
             {
-                path:"/addparcel",
-                 loader: () => fetch("./warehouses.json"),
+                path: "/addparcel",
+                loader: () => fetch("./warehouses.json"),
                 Component: AddParcel
             },
         ]
@@ -40,6 +43,18 @@ export const router = createBrowserRouter([
                 path: "/signup",
                 Component: Signup
             },
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute>
+            <DashboardLayout></DashboardLayout>
+        </PrivateRoute>,
+        children: [
+            {
+                path: "myparcels",
+                Component: MyParcels,
+            }
         ]
     }
 ])
