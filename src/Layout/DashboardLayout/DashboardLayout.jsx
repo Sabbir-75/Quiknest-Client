@@ -1,8 +1,14 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
+import { FaBox, FaMoneyCheckAlt, FaClipboardList, FaFileInvoice, FaCog } from "react-icons/fa";
 
 const DashboardLayout = () => {
     const location = useLocation()
+
+    const linkClasses = (path) =>
+        `flex items-center gap-2 hover:bg-primary/80 text-base-content px-3 py-2 rounded duration-200 ${location.pathname === path && "bg-primary shadow-md"
+        }`;
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -39,8 +45,36 @@ const DashboardLayout = () => {
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label>
                 <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
                     {/* Sidebar content here */}
-                    <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/"}>Home</NavLink></li>
-                    <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200 ${location.pathname == "/dashboard/myparcels" && "bg-primary"}`} to={"myparcels"}>My Parcels</NavLink></li>
+                    <li className='text-base-300 font-semibold text-base'>
+                        <NavLink to={"/"} className={`hover:bg-primary`}>
+                            <FaBox /> Home
+                        </NavLink>
+                    </li>
+                    <li className='text-base-300 font-semibold text-base'>
+                        <NavLink to="/dashboard/myparcels" className={linkClasses("/dashboard/myparcels")}>
+                            <FaBox /> My Parcels
+                        </NavLink>
+                    </li>
+                    <li className='text-base-300 font-semibold text-base'>
+                        <NavLink to="/dashboard/payment-history" className={linkClasses("/dashboard/payment_history")}>
+                            <FaMoneyCheckAlt /> Payment History
+                        </NavLink>
+                    </li>
+                    <li className='text-base-300 font-semibold text-base'>
+                        <NavLink to="/dashboard/my-orders" className={linkClasses("/dashboard/my-orders")}>
+                            <FaClipboardList /> My Orders
+                        </NavLink>
+                    </li>
+                    <li className='text-base-300 font-semibold text-base'>
+                        <NavLink to="/dashboard/invoices" className={linkClasses("/dashboard/invoices")}>
+                            <FaFileInvoice /> Invoices
+                        </NavLink>
+                    </li>
+                    <li className='text-base-300 font-semibold text-base'>
+                        <NavLink to="/dashboard/settings" className={linkClasses("/dashboard/settings")}>
+                            <FaCog /> Settings
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
         </div>
