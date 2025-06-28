@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
-import { FaBox, FaMoneyCheckAlt, FaClipboardList, FaFileInvoice, FaCog, FaSearchLocation, FaHome } from "react-icons/fa";
+import { FaBox, FaMoneyCheckAlt, FaHome } from "react-icons/fa";
 
 const DashboardLayout = () => {
     const location = useLocation()
@@ -58,26 +58,6 @@ const DashboardLayout = () => {
                     <li className='text-base-300 font-semibold text-base'>
                         <NavLink to="/dashboard/payment-history" className={linkClasses("/dashboard/payment_history")}>
                             <FaMoneyCheckAlt /> Payment History
-                        </NavLink>
-                    </li>
-                    <li className='text-base-300 font-semibold text-base'>
-                        <NavLink to="/dashboard/track-package" className={linkClasses("/dashboard/track-package")}>
-                            <FaSearchLocation /> Track a Package
-                        </NavLink>
-                    </li>
-                    <li className='text-base-300 font-semibold text-base'>
-                        <NavLink to="/dashboard/my-orders" className={linkClasses("/dashboard/my-orders")}>
-                            <FaClipboardList /> My Orders
-                        </NavLink>
-                    </li>
-                    <li className='text-base-300 font-semibold text-base'>
-                        <NavLink to="/dashboard/invoices" className={linkClasses("/dashboard/invoices")}>
-                            <FaFileInvoice /> Invoices
-                        </NavLink>
-                    </li>
-                    <li className='text-base-300 font-semibold text-base'>
-                        <NavLink to="/dashboard/settings" className={linkClasses("/dashboard/settings")}>
-                            <FaCog /> Settings
                         </NavLink>
                     </li>
                 </ul>

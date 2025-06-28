@@ -2,16 +2,19 @@ import React from 'react';
 import googlepic from "../../../src/assets/Google__G__Logo 1.png"
 import { useAuth } from '../../Hooks/UseAuth/UseAuth';
 import { Bounce, toast } from 'react-toastify';
+import { useLocation, useNavigate } from 'react-router';
+import UseAxiosImagBB from '../../Hooks/UseAxiosImagBB/UseAxiosImagBB';
 
 const GoogleLogin = () => {
 
     const { googleLogin } = useAuth()
-    // const navigate = useNavigate()
-    // const location = useLocation()
+    const useUserSecure = UseAxiosImagBB()
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const googleHandler = () => {
         googleLogin()
-            .then(() => {
+            .then(async (result) => {
                 toast.success('Google Login Successfully', {
                     position: "top-right",
                     autoClose: 500,
@@ -23,8 +26,17 @@ const GoogleLogin = () => {
                     theme: "colored",
                     transition: Bounce
                 });
-                // navigate(location.state || "/")
+                navigate(location.state || "/")
+                const name = result?.user?.email
+                const userInfo = {
+                    email: name,
+                    rolle: "user",
+                    created_at: new Date().toISOString(),
+                    last_login: new Date().toISOString()
+                }
 
+                const res = await useUserSecure.post("/users", userInfo)
+                console.log(res.data);
 
             })
             .catch((error) => {

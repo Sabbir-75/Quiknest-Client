@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { Helmet } from 'react-helmet';
 import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
 import { useForm } from 'react-hook-form';
@@ -11,8 +11,8 @@ const Login = () => {
     const [emailPlaceholder, setEmailPlaceholder] = useState("Enter your email address")
     const [passwordPlaceholder, setPasswordPlaceholder] = useState("password")
     const { register, handleSubmit, formState: { errors } } = useForm()
-    // const navigate = useNavigate()
-    // const location = useLocation()
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const loginHandler = (data,e) => {
         e.preventDefault()
@@ -31,7 +31,7 @@ const Login = () => {
                     theme: "colored",
                     transition: Bounce
                 });
-                // navigate(location.state || "/")
+                navigate(location.state || "/")
                  e.target.reset()
             })
             .catch((error) => {

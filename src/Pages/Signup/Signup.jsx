@@ -1,45 +1,83 @@
 import React, { useState } from 'react';
-// import { Link, useLocation, useNavigate } from 'react-router';
-import { Link } from 'react-router';
-// import { Bounce, toast } from 'react-toastify';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { Helmet } from 'react-helmet';
 import GoogleLogin from '../../Components/GoogleLogin/GoogleLogin';
 import { useForm } from 'react-hook-form';
 import profilePic from "../../../src/assets/image-upload-icon.png"
 import { useAuth } from '../../Hooks/UseAuth/UseAuth';
 import { Bounce, toast } from 'react-toastify';
+import axios from 'axios';
+import UseAxiosImagBB from '../../Hooks/UseAxiosImagBB/UseAxiosImagBB';
+
 
 
 const Signup = () => {
 
-    const { createAccount } = useAuth()
+    const { createAccount, profileUpdateNamePhoto } = useAuth()
+    const useUserSecure = UseAxiosImagBB()
     const [namePlaceholder, setNamePlaceholder] = useState("Enter your Name")
     const [emailPlaceholder, setEmailPlaceholder] = useState("Enter your email address")
     const [passwordPlaceholder, setPasswordPlaceholder] = useState("password")
     const { register, handleSubmit, formState: { errors } } = useForm()
-    // const navigate = useNavigate()
-    // const location = useLocation()
+    const [image, setImage] = useState('')
+    const navigate = useNavigate()
+    const location = useLocation()
 
-    const signupHandler = (data,e) => {
+    const fileHandler = async (e) => {
+        const files = e.target.files[0]
+        const form = new FormData()
+        form.append("image", files)
+        const res = await axios.post(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMAGEBB}`, form)
+        const publicImage = res.data.data.url
+        setImage(publicImage)
+    }
+
+    const signupHandler = (data, e) => {
 
         const { email, password } = data
-        console.log(email, password);
 
         createAccount(email, password)
-            .then(() => {
-                toast.success(' Profile create Successfully', {
-                    position: "top-right",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "colored",
-                    transition: Bounce
-                });
-                // navigate(location.state || "/")
-               e.target.reset()
+            .then(async(result) => {
+                console.log(result.user);
+
+                const name = data.name
+
+                const userInfo = {
+                    email: data.email,
+                    rolle: "user",
+                    created_at: new Date().toISOString(),
+                    last_login: new Date().toISOString()
+                }
+
+                const res = await useUserSecure.post("/users", userInfo)
+                console.log(res.data);
+
+                const updateProfile = {
+                    displayName: name,
+                    photoURL: image
+                }
+
+                profileUpdateNamePhoto(updateProfile)
+                    .then(() => {
+                        toast.success(' Profile create Successfully', {
+                            position: "top-right",
+                            autoClose: 1000,
+                            hideProgressBar: false,
+                            closeOnClick: false,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "colored",
+                            transition: Bounce
+                        });
+                        navigate(location.state || "/")
+                        e.target.reset()
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+
+
             })
             .catch((error) => {
                 toast.error(`${error.code}`, {
@@ -84,6 +122,9 @@ const Signup = () => {
                         {
                             (errors.name?.type === 'pattern') && <p className='text-red-600 text-sm font-medium'>Name must be capital or small letter</p>
                         }
+
+                        <label className="label">Your photo</label>
+                        <input type="file" onChange={fileHandler} className="input w-full" placeholder="choose your photo" />
 
                         <label className="label">Email address</label>
                         <input type="email" {...register("email", { required: true, pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/ })} onFocus={() => setEmailPlaceholder("")}

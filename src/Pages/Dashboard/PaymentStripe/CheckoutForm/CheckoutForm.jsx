@@ -40,7 +40,7 @@ const CheckoutForm = () => {
 
     const CheckoutFormHandler = async (e) => {
         e.preventDefault()
-        // setPaymentLoading(true)
+        setPaymentLoading(true)
 
         if (!stripe || !elements) {
             return
@@ -59,7 +59,6 @@ const CheckoutForm = () => {
         }
         else {
             setError("")
-            setPaymentLoading(true)
             console.log("paymentMethod Message", paymentMethod);
         }
 
@@ -101,7 +100,7 @@ const CheckoutForm = () => {
                 <p>Transaction ID: <b>${result.paymentIntent.id}</b></p>
             `,
                         confirmButtonText: 'Go to My Parcels',
-                         confirmButtonColor: '#28a745',
+                        confirmButtonColor: '#28a745',
                         allowOutsideClick: false,
                     }).then(() => {
                         // Redirect করার জন্য
