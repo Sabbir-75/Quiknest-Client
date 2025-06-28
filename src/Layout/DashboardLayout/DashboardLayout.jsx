@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
-import { FaBox, FaMoneyCheckAlt, FaClipboardList, FaFileInvoice, FaCog } from "react-icons/fa";
+import { FaBox, FaMoneyCheckAlt, FaClipboardList, FaFileInvoice, FaCog, FaSearchLocation, FaHome } from "react-icons/fa";
 
 const DashboardLayout = () => {
     const location = useLocation()
@@ -47,7 +47,7 @@ const DashboardLayout = () => {
                     {/* Sidebar content here */}
                     <li className='text-base-300 font-semibold text-base'>
                         <NavLink to={"/"} className={`hover:bg-primary`}>
-                            <FaBox /> Home
+                            <FaHome /> Home
                         </NavLink>
                     </li>
                     <li className='text-base-300 font-semibold text-base'>
@@ -58,6 +58,11 @@ const DashboardLayout = () => {
                     <li className='text-base-300 font-semibold text-base'>
                         <NavLink to="/dashboard/payment-history" className={linkClasses("/dashboard/payment_history")}>
                             <FaMoneyCheckAlt /> Payment History
+                        </NavLink>
+                    </li>
+                    <li className='text-base-300 font-semibold text-base'>
+                        <NavLink to="/dashboard/track-package" className={linkClasses("/dashboard/track-package")}>
+                            <FaSearchLocation /> Track a Package
                         </NavLink>
                     </li>
                     <li className='text-base-300 font-semibold text-base'>
