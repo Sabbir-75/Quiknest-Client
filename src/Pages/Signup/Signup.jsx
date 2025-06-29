@@ -37,7 +37,7 @@ const Signup = () => {
         const { email, password } = data
 
         createAccount(email, password)
-            .then(async(result) => {
+            .then(async (result) => {
                 console.log(result.user);
 
                 const name = data.name
@@ -104,7 +104,12 @@ const Signup = () => {
 
                     <h1 className="text-4xl md:text-4xl lg:text-5xl font-extrabold mb-1">Create an Account</h1>
                     <h1 className="text-lg font-medium">Register with Quiknest</h1>
-                    <img className='w-13 h-13 my-5' src={profilePic} alt={profilePic} />
+                    <div className='w-13 h-13 rounded-full my-5'>
+                        {
+                            image ? <img className='w-full rounded-full h-full' src={image} alt={image} /> : <img className='w-full' src={profilePic} alt={profilePic} />
+                        }
+
+                    </div>
                     <GoogleLogin></GoogleLogin>
 
                     <div className="flex items-center w-full my-4">

@@ -4,6 +4,7 @@ import { useQuery, } from '@tanstack/react-query'
 import UseAxiosSecure from '../../../Hooks/UseAxiosSecure/UseAxiosSecure';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router';
+import { Helmet } from 'react-helmet';
 
 const MyParcels = () => {
     const statusColorMap = {
@@ -60,6 +61,9 @@ const MyParcels = () => {
 
     return (
         <div className="overflow-x-auto px-3 md:px-4 lg:px-8 my-3 md:my-6 lg:my-10 space-y-3 md:space-y-6 lg:space-y-8">
+            <Helmet>
+                <title>Quiknest || MyParcel</title>
+            </Helmet>
             <h1 className='text-center text-4xl font-extrabold text-base-content'>My Parcels</h1>
             <table className="min-w-full bg-base-100 text-base-content rounded-2xl border border-primary shadow-primary">
                 <thead className="bg-base-200 text-left">

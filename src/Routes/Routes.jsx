@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
             {
                 path: "/addparcel",
                 loader: () => fetch("./warehouses.json"),
-                Component: AddParcel
+                element: <PrivateRoute><AddParcel></AddParcel></PrivateRoute>
             },
         ]
     },
