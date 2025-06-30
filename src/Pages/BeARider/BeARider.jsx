@@ -31,7 +31,7 @@ const BeARider = () => {
         }
         const res = await useSecure.post("/riders", ridersData)
         if (res.data.insertedId) {
-            // reset()
+            reset()
             Swal.fire({
                 icon: "success",
                 title: "Your work has been saved",
@@ -98,7 +98,7 @@ const BeARider = () => {
                                     }
 
                                 </select>
-                                 {(errors.region?.type === "required") && <p className="text-red-500">Warehouse is required</p>}
+                                {(errors.region?.type === "required") && <p className="text-red-500">Warehouse is required</p>}
                             </div>
 
                             <div className="lg:col-span-2">
