@@ -46,7 +46,7 @@ const Navbar = () => {
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/coverage"}>Coverage</NavLink></li>
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/about"}>About Us</NavLink></li>
         <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/addparcel"}>Add Parcel</NavLink></li>
-        <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/rider"}>Be a Rider</NavLink></li>
+        <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/bearider"}>Be a Rider</NavLink></li>
         {
             user &&  <li className='text-base-300 font-semibold text-base'><NavLink className={`hover:bg-primary px-2 py-1 rounded-sm duration-200`} to={"/dashboard"}>Dashboard</NavLink></li>
         }

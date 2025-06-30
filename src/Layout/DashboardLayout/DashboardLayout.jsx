@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
-import { FaBox, FaMoneyCheckAlt, FaHome } from "react-icons/fa";
+import { FaBox, FaMoneyCheckAlt, FaHome , FaHourglassHalf , FaBiking} from "react-icons/fa";
 
 const DashboardLayout = () => {
     const location = useLocation()
@@ -56,8 +56,26 @@ const DashboardLayout = () => {
                         </NavLink>
                     </li>
                     <li className='text-base-300 font-semibold text-base'>
-                        <NavLink to="/dashboard/payment-history" className={linkClasses("/dashboard/payment_history")}>
+                        <NavLink to="/dashboard/payment-history" className={linkClasses("/dashboard/payment-history")}>
                             <FaMoneyCheckAlt /> Payment History
+                        </NavLink>
+                    </li>
+                    <li className="text-base-300 font-semibold text-base">
+                        <NavLink
+                            to="/dashboard/active_riders"
+                            className={linkClasses("/dashboard/active_riders")}
+                        >
+                            <FaBiking /> Active Riders
+                        </NavLink>
+                    </li>
+
+                    {/* Pending Riders menu */}
+                    <li className="text-base-300 font-semibold text-base">
+                        <NavLink
+                            to="/dashboard/pending_riders"
+                            className={linkClasses("/dashboard/pending_riders")}
+                        >
+                            <FaHourglassHalf /> Pending Riders
                         </NavLink>
                     </li>
                 </ul>
