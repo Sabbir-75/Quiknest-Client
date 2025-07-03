@@ -14,6 +14,10 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import BeARider from "../Pages/BeARider/BeARider";
 import ActiveRiders from "../Pages/Dashboard/ActiveRiders/ActiveRiders";
 import PendingRiders from "../Pages/Dashboard/PendingRiders/PendingRiders";
+import MakeAdmin from "../Pages/Dashboard/MakeAdmin/MakeAdmin";
+import AdminRoute from "../Context/AdminRoute/AdminRoute";
+import Forbidden from "../Pages/Forbidden/Forbidden";
+import AssignRider from "../Pages/Dashboard/AssignRider/AssignRider";
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +42,10 @@ export const router = createBrowserRouter([
                 path: "/addparcel",
                 loader: () => fetch("./warehouses.json"),
                 element: <PrivateRoute><AddParcel></AddParcel></PrivateRoute>
+            },
+            {
+                path: "/forbidden",
+                Component: Forbidden
             },
         ]
     },
@@ -75,11 +83,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: "pending_riders",
-                Component: PendingRiders,
+                element: <AdminRoute><PendingRiders></PendingRiders></AdminRoute>
             },
             {
                 path: "active_riders",
-                Component: ActiveRiders,
+                element: <AdminRoute><ActiveRiders></ActiveRiders></AdminRoute>
+            },
+            {
+                path: "make_admin",
+                element: <AdminRoute><MakeAdmin></MakeAdmin></AdminRoute>
+            },
+            {
+                path: "assignrider",
+                element: <AdminRoute><AssignRider></AssignRider></AdminRoute>
             },
         ]
     }

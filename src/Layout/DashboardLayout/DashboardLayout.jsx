@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
-import { FaBox, FaMoneyCheckAlt, FaHome , FaHourglassHalf , FaBiking} from "react-icons/fa";
+import { FaBox, FaMoneyCheckAlt, FaHome, FaHourglassHalf, FaBiking, FaUserShield, FaMotorcycle } from "react-icons/fa";
+import USeRole from '../../Hooks/UseRole/USeRole';
 
 const DashboardLayout = () => {
     const location = useLocation()
+    const { role } = USeRole()
 
     const linkClasses = (path) =>
         `flex items-center gap-2 hover:bg-primary/80 text-base-content px-3 py-2 rounded duration-200 ${location.pathname === path && "bg-primary shadow-md"
@@ -60,24 +62,50 @@ const DashboardLayout = () => {
                             <FaMoneyCheckAlt /> Payment History
                         </NavLink>
                     </li>
-                    <li className="text-base-300 font-semibold text-base">
-                        <NavLink
-                            to="/dashboard/active_riders"
-                            className={linkClasses("/dashboard/active_riders")}
-                        >
-                            <FaBiking /> Active Riders
-                        </NavLink>
-                    </li>
 
-                    {/* Pending Riders menu */}
-                    <li className="text-base-300 font-semibold text-base">
-                        <NavLink
-                            to="/dashboard/pending_riders"
-                            className={linkClasses("/dashboard/pending_riders")}
-                        >
-                            <FaHourglassHalf /> Pending Riders
-                        </NavLink>
-                    </li>
+                    {
+                        (role === "admin") &&
+                        <>
+                        {/* Assign Riders menu */}
+                            <li className="text-base-300 font-semibold text-base">
+                                <NavLink
+                                    to="/dashboard/assignrider"
+                                    className={linkClasses("/dashboard/assignrider")}
+                                >
+                                    <FaMotorcycle className="mr-2" /> Assign Rider
+                                </NavLink>
+                            </li>
+                            {/* Active Riders menu */}
+                            <li className="text-base-300 font-semibold text-base">
+                                <NavLink
+                                    to="/dashboard/active_riders"
+                                    className={linkClasses("/dashboard/active_riders")}
+                                >
+                                    <FaBiking /> Active Riders
+                                </NavLink>
+                            </li>
+
+                            {/* Pending Riders menu */}
+                            <li className="text-base-300 font-semibold text-base">
+                                <NavLink
+                                    to="/dashboard/pending_riders"
+                                    className={linkClasses("/dashboard/pending_riders")}
+                                >
+                                    <FaHourglassHalf /> Pending Riders
+                                </NavLink>
+                            </li>
+                            {/* Admin Portal */}
+                            <li className="text-base-300 font-semibold text-base">
+                                <NavLink
+                                    to="/dashboard/make_admin"
+                                    className={linkClasses("/dashboard/make_admin")}
+                                >
+                                    <FaUserShield className="mr-2" /> Make Admin
+                                </NavLink>
+                            </li>
+                        </>
+                    }
+
                 </ul>
             </div>
         </div>

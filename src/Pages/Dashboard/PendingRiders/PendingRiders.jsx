@@ -51,7 +51,7 @@ const PendingRiders = () => {
         });
     };
 
-    const handleAccept = (rider, id, action) => {
+    const handleAccept = (rider, id, action,email) => {
         Swal.fire({
             title: `Accept rider "${rider.name}"?`,
             icon: "question",
@@ -62,7 +62,8 @@ const PendingRiders = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const data = {
-                    rider_status: action
+                    rider_status: action,
+                    email
                 }
                 const res = await useSecure.patch(`/riders/status/${id}`, data)
                 if (res.data.modifiedCount) {
@@ -117,7 +118,7 @@ const PendingRiders = () => {
                                             </button>
                                             <button
                                                 className="btn btn-xs bg-green-500 text-white hover:bg-green-600"
-                                                onClick={() => handleAccept(rider, rider._id, "active")}
+                                                onClick={() => handleAccept(rider, rider._id, "active",user?.email)}
                                             >
                                                 <FaCheck /> Accept
                                             </button>

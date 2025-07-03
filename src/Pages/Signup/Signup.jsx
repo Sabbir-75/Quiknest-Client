@@ -44,7 +44,8 @@ const Signup = () => {
 
                 const userInfo = {
                     email: data.email,
-                    rolle: "user",
+                    role: "user",
+                    photo: image,
                     created_at: new Date().toISOString(),
                     last_login: new Date().toISOString()
                 }

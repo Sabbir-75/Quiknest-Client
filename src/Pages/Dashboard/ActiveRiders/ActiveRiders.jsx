@@ -29,7 +29,6 @@ const ActiveRiders = () => {
         setSelectSearch(searchTerm)
     }
 
-
     const handleDeactivate = (rider, id, action) => {
         Swal.fire({
             title: `Deactivate rider "${rider.name}"?`,
@@ -63,6 +62,8 @@ const ActiveRiders = () => {
             }
         });
     }
+
+
     return (
         <Container>
             <div className="overflow-x-auto pt-6 space-y-10 rounded-2xl shadow mt-6">
@@ -80,11 +81,8 @@ const ActiveRiders = () => {
                             onChange={(e) => setSearchTerm(e.target.value)}
                         />
                     </div>
-                    <button
-                        className="bg-primary text-primary-content font-semibold px-4 py-[8px] rounded-r-full shadow-sm"
-                        onClick={handleSearch}
-                    >
-                        Search
+                    <button onClick={handleSearch} className="btn btn-primary">
+                     Search
                     </button>
                 </div>
                 <table className="min-w-full bg-base-100 text-base-content">

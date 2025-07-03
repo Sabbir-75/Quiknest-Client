@@ -28,9 +28,11 @@ const GoogleLogin = () => {
                 });
                 navigate(location.state || "/")
                 const name = result?.user?.email
+                const photo = result?.user?.photoURL
                 const userInfo = {
                     email: name,
-                    rolle: "user",
+                    role: "user",
+                    photo, 
                     created_at: new Date().toISOString(),
                     last_login: new Date().toISOString()
                 }
