@@ -18,6 +18,10 @@ import MakeAdmin from "../Pages/Dashboard/MakeAdmin/MakeAdmin";
 import AdminRoute from "../Context/AdminRoute/AdminRoute";
 import Forbidden from "../Pages/Forbidden/Forbidden";
 import AssignRider from "../Pages/Dashboard/AssignRider/AssignRider";
+import PendingDeliveries from "../Pages/Dashboard/PendingDeliveries/PendingDeliveries";
+import RiderRoute from "../Context/RiderRoute/RiderRoute";
+import CompleteDelivered from "../Pages/Dashboard/CompleteDelivered/CompleteDelivered";
+import Earning from "../Pages/Dashboard/Earning/Earning";
 
 export const router = createBrowserRouter([
     {
@@ -80,6 +84,18 @@ export const router = createBrowserRouter([
             {
                 path: "payment-history",
                 Component: PaymentHistory,
+            },
+            {
+                path: "earning",
+                element:<RiderRoute><Earning></Earning></RiderRoute>
+            },
+            {
+                path: "complete_delivered",
+                element: <RiderRoute><CompleteDelivered></CompleteDelivered></RiderRoute>
+            },
+            {
+                path: "pending_deliveries",
+                element:<RiderRoute><PendingDeliveries></PendingDeliveries></RiderRoute>
             },
             {
                 path: "pending_riders",

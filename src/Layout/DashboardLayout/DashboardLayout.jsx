@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
-import { FaBox, FaMoneyCheckAlt, FaHome, FaHourglassHalf, FaBiking, FaUserShield, FaMotorcycle } from "react-icons/fa";
+import { FaBox, FaMoneyCheckAlt, FaHome, FaHourglassHalf, FaBiking, FaUserShield, FaMotorcycle, FaTruckMoving, FaCheckCircle, FaMoneyBillWave } from "react-icons/fa";
 import USeRole from '../../Hooks/UseRole/USeRole';
 
 const DashboardLayout = () => {
@@ -62,11 +62,39 @@ const DashboardLayout = () => {
                             <FaMoneyCheckAlt /> Payment History
                         </NavLink>
                     </li>
+                    {
+                        role === "rider" && <>
+                            <li className="text-base-300 font-semibold text-base">
+                                <NavLink
+                                    to="/dashboard/pending_deliveries"
+                                    className={linkClasses("/dashboard/pending_deliveries")}
+                                >
+                                    <FaTruckMoving className="mr-2" /> Pending Deliveries
+                                </NavLink>
+                            </li>
+                            <li className="text-base-300 font-semibold text-base">
+                                <NavLink
+                                    to="/dashboard/complete_delivered"
+                                    className={linkClasses("/dashboard/complete_delivered")}
+                                >
+                                    <FaCheckCircle className="mr-2" /> Complete Delivered
+                                </NavLink>
+                            </li>
+                            <li className="text-base-300 font-semibold text-base">
+                                <NavLink
+                                    to="/dashboard/earning"
+                                    className={linkClasses("/dashboard/earning")}
+                                >
+                                    <FaMoneyBillWave className="mr-2" /> Earning
+                                </NavLink>
+                            </li>
+                        </>
+                    }
 
                     {
                         (role === "admin") &&
                         <>
-                        {/* Assign Riders menu */}
+                            {/* Assign Riders menu */}
                             <li className="text-base-300 font-semibold text-base">
                                 <NavLink
                                     to="/dashboard/assignrider"
