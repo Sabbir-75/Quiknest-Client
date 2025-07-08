@@ -32,7 +32,7 @@ const DashboardHome = () => {
         delivered: "#82ca9d",
     };
 
-    const newData = emails.filter(d => d.email === user?.email)
+    const newData = emails.filter(d => d.email === user?.email || [])
     console.log(newData);
     const newdelivery_status_assigned = status.filter(d => d.delivery_status === "assigned")
     const newdelivery_status_delivered = status.filter(d => d.delivery_status === "delivered")
@@ -40,23 +40,32 @@ const DashboardHome = () => {
     if (isLoading) return <p className="text-center mt-10">Loading dashboard...</p>;
     return (
         <div className="p-6 space-y-8">
-            <h1 className="text-4xl font-extrabold text-base-content text-center py-3">User</h1>
+            <h1 className="text-4xl font-extrabold text-base-content text-center py-3git ">User</h1>
             {/* Summary Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="bg-white p-4 rounded-xl shadow text-center">
                     <FaBox className="text-3xl text-indigo-600 mx-auto" />
                     <h2 className="text-lg font-semibold mt-2">My Parcels</h2>
-                    <p className="text-2xl font-bold text-indigo-800">{newData[0].count}</p>
+                    {
+                        newData.length ? <p className="text-2xl font-bold text-indigo-800">{newData[0].count}</p> : ""
+                    }
+
                 </div>
                 <div className="bg-white p-4 rounded-xl shadow text-center">
                     <FaTruck className="text-3xl text-yellow-500 mx-auto" />
                     <h2 className="text-lg font-semibold mt-2">Assigned</h2>
-                    <p className="text-2xl font-bold text-yellow-600">{newdelivery_status_assigned[0].count}</p>
+                    {
+                        newdelivery_status_assigned.length ? <p className="text-2xl font-bold text-yellow-600">{newdelivery_status_assigned[0].count}</p> : ""
+                    }
+
                 </div>
                 <div className="bg-white p-4 rounded-xl shadow text-center">
                     <FaCheckCircle className="text-3xl text-green-500 mx-auto" />
                     <h2 className="text-lg font-semibold mt-2">Delivered</h2>
-                    <p className="text-2xl font-bold text-green-600">{newdelivery_status_delivered[0].count}</p>
+                    {
+                        newdelivery_status_delivered.length ? <p className="text-2xl font-bold text-green-600">{newdelivery_status_delivered[0].count}</p> : ""
+                    }
+
                 </div>
             </div>
 
