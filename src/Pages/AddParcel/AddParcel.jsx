@@ -5,6 +5,7 @@ import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 import { useAuth } from '../../Hooks/UseAuth/UseAuth';
 import UseAxiosSecure from '../../Hooks/UseAxiosSecure/UseAxiosSecure';
+import useTrackingLogger from '../../Hooks/TrakingLogger/TrakingLogger';
 
 function generateTrackingIdFromDate() {
     const base = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 17);
@@ -16,6 +17,7 @@ const AddParcel = () => {
     const allData = useLoaderData()
     const { user } = useAuth()
     const useSecure = UseAxiosSecure()
+    const {logTracking} = useTrackingLogger()
 
     const {
         register,
@@ -88,6 +90,7 @@ const AddParcel = () => {
             cancelButtonColor: "#fbbf24",
         }).then((result) => {
             if (result.isConfirmed) {
+                const track = generateTrackingIdFromDate()
                 const finalData = {
                     ...data, // all form inputs
                     cost: cost,
@@ -95,19 +98,25 @@ const AddParcel = () => {
                     creation_date: new Date().toISOString(),
                     payment_status: "unpaid",
                     delivery_status: "pending",
-                    tracking_id: generateTrackingIdFromDate()
+                    tracking_id: track
                 };
 
                 useSecure.post("/parcels", finalData)
-                    .then(data => {
+                    .then(async(data) => {
                         if (data.data.insertedId) {
                             Swal.fire({
                                 icon: "success",
                                 title: "Readirecting...",
-                                text:"Processing to payment gateway.",
+                                text: "Processing to payment gateway.",
                                 showConfirmButton: false,
                                 timer: 1500
                             });
+                            await logTracking({
+                                tracking_id: track,
+                                status: "parcel_created",
+                                details: `Created by ${user.displayName}`,
+                                updated_by: user.email,
+                            })
                         }
                     })
 

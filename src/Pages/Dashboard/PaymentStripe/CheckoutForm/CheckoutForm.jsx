@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router';
 import UseAxiosSecure from '../../../../Hooks/UseAxiosSecure/UseAxiosSecure';
 import { useAuth } from '../../../../Hooks/UseAuth/UseAuth';
 import Swal from 'sweetalert2';
+import useTrackingLogger from '../../../../Hooks/TrakingLogger/TrakingLogger';
 
 const CheckoutForm = () => {
     const { user } = useAuth()
@@ -14,6 +15,7 @@ const CheckoutForm = () => {
     const [error, setError] = useState("")
     const { id } = useParams()
     const navigate = useNavigate()
+    const { logTracking } = useTrackingLogger()
     const [paymentLoading, setPaymentLoading] = useState(false)
 
     const { isPending, data: singleData = {} } = useQuery({
@@ -102,7 +104,13 @@ const CheckoutForm = () => {
                         confirmButtonText: 'Go to My Parcels',
                         confirmButtonColor: '#28a745',
                         allowOutsideClick: false,
-                    }).then(() => {
+                    }).then(async () => {
+                        await logTracking({
+                            tracking_id: singleData.tracking_id,
+                            status: "payment_successfully",
+                            details: `Created by ${user.displayName}`,
+                            updated_by: user.email,
+                        })
                         // Redirect করার জন্য
                         navigate('/dashboard/myparcels');
                     });

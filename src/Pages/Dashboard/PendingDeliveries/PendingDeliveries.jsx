@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../../Hooks/UseAuth/UseAuth';
 import UseAxiosImagBB from '../../../Hooks/UseAxiosImagBB/UseAxiosImagBB';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import useTrackingLogger from '../../../Hooks/TrakingLogger/TrakingLogger';
 
 const PendingDeliveries = () => {
     const { user } = useAuth()
     const useSecure = UseAxiosImagBB()
+    const { logTracking } = useTrackingLogger()
 
     const { data: parcels = [], isLoading, refetch } = useQuery({
         queryKey: ["parcels", user],
@@ -15,7 +17,6 @@ const PendingDeliveries = () => {
             return data.data
         }
     })
-
 
 
     const { mutateAsync: stateChange } = useMutation({
@@ -44,6 +45,12 @@ const PendingDeliveries = () => {
                         text: "Your file has been deleted.",
                         icon: "success"
                     });
+                    await logTracking({
+                        tracking_id: parcel.tracking_id,
+                        status: "parcel_Delivered",
+                        details: `Created by ${user.displayName}`,
+                        updated_by: user.email,
+                    })
                 }
 
             }

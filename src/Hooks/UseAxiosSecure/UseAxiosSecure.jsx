@@ -4,7 +4,7 @@ import { useAuth } from '../UseAuth/UseAuth';
 
 
 const axiosInstance = axios.create({
-    baseURL: "http://localhost:5000"
+    baseURL: "https://quiknest-server.vercel.app"
 })
 
 const UseAxiosSecure = () => {

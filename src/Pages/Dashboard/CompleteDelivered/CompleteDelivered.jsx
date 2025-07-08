@@ -20,9 +20,10 @@ const CompleteDelivered = () => {
         return Math.round(parcel.cost * percentage); // Round to nearest Taka
     };
 
-    const {mutateAsync: cashOutmutation} = useMutation({
-        mutationFn: async({ parcelId, rider_amount }) => {
-            const data = await useSecure.patch(`/parcel/paid/${parcelId}`,{
+
+    const { mutateAsync: cashOutmutation } = useMutation({
+        mutationFn: async ({ parcelId, rider_amount }) => {
+            const data = await useSecure.patch(`/parcel/paid/${parcelId}`, {
                 rider_amount
             })
             return data.data
@@ -32,7 +33,7 @@ const CompleteDelivered = () => {
     const handleCashout = async (parcel) => {
         const cashoutAmount = calculateCashout(parcel);
         const data = await cashOutmutation({ parcelId: parcel._id, rider_amount: cashoutAmount })
-        if(data.modifiedCount){
+        if (data.modifiedCount) {
             refetch()
         }
     };

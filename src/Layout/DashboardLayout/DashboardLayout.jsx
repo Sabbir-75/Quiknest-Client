@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router';
-import { FaBox, FaMoneyCheckAlt, FaHome, FaHourglassHalf, FaBiking, FaUserShield, FaMotorcycle, FaTruckMoving, FaCheckCircle, FaMoneyBillWave } from "react-icons/fa";
+import { FaBox, FaMoneyCheckAlt, FaHome, FaHourglassHalf, FaBiking, FaUserShield, FaMotorcycle, FaTruckMoving, FaCheckCircle, FaMoneyBillWave, FaSearchLocation } from "react-icons/fa";
 import USeRole from '../../Hooks/UseRole/USeRole';
 
 const DashboardLayout = () => {
@@ -49,17 +49,25 @@ const DashboardLayout = () => {
                     {/* Sidebar content here */}
                     <li className='text-base-300 font-semibold text-base'>
                         <NavLink to={"/"} className={`hover:bg-primary`}>
-                            <FaHome /> Home
+                            <FaHome className="mr-2" /> Home
                         </NavLink>
                     </li>
                     <li className='text-base-300 font-semibold text-base'>
                         <NavLink to="/dashboard/myparcels" className={linkClasses("/dashboard/myparcels")}>
-                            <FaBox /> My Parcels
+                            <FaBox className="mr-2" /> My Parcels
                         </NavLink>
                     </li>
                     <li className='text-base-300 font-semibold text-base'>
                         <NavLink to="/dashboard/payment-history" className={linkClasses("/dashboard/payment-history")}>
-                            <FaMoneyCheckAlt /> Payment History
+                            <FaMoneyCheckAlt className="mr-2" /> Payment History
+                        </NavLink>
+                    </li>
+                    <li className="text-base-300 font-semibold text-base">
+                        <NavLink
+                            to="/dashboard/tracking"
+                            className={linkClasses("/dashboard/tracking")}
+                        >
+                            <FaSearchLocation className="mr-2" /> TrackingPage
                         </NavLink>
                     </li>
                     {
